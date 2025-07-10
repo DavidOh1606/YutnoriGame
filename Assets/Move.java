@@ -17,7 +17,7 @@ public class Move extends Sprite implements MouseListener {
     private String text;
 
     public Move(int dist, String text) {
-        super(ICON);
+        super(FILE);
 
         this.dist = dist;
         this.text = text;
@@ -25,11 +25,13 @@ public class Move extends Sprite implements MouseListener {
         mouseOver = false;
 
         JLabel textLabel = new JLabel(this.text);
-        setBorder(new EmptyBorder(new Insets(10, 0, 0, 0)));
+        setBorder(new EmptyBorder(new Insets(5, 0, 0, 0)));
 
         add(textLabel);
 
         addMouseListener(this);
+        setRescaleFactor(0.8f);
+        resetSize();
 
     }
 

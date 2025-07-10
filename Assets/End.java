@@ -13,20 +13,21 @@ public class End extends Sprite implements MouseListener {
 
     private final static String FILE = "Images/start.png";
 
-    private final static ImageIcon ICON = new ImageIcon(FILE);
-
     private List<Piece> pieces;
 
     private boolean selectable;
 
     public End() {
-        super(ICON);
+        super(FILE);
 
         pieces = new ArrayList<>();
         selectable = false;
         setAlpha(DEFAULT_ALPHA);
         addMouseListener(this);
         setLayout(new FlowLayout());
+
+        setRescaleFactor(0.78f);
+        resetSize();
     }
 
 

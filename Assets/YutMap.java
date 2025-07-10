@@ -6,29 +6,35 @@ import java.util.List;
 import java.util.ArrayList;
 import java.awt.image.*;
 
+import Screen.Screen;
+
 public class YutMap extends Sprite {
     
     private static final int Y_OFFSET = 6;
 
     private static final String FILE = "Images/yut_map_new.png";
-    private static final ImageIcon ICON = new ImageIcon(FILE);
 
     private YutMapTree map;
     private List<Option> options;
 
 
     public YutMap() {
-        super(ICON);
+        super(FILE);
         map = new YutMapTree();
 
         GM.mapTree = map;
 
         setLayout(null);
         options = new ArrayList<>();
+        setRescaleFactor(0.8f);
+        resetSize();
+
     }
 
     public void update() {
         List<YutMapTreeNode> nodes = map.getNodes();
+        float minScale = Math.min(Screen.scaleX, Screen.scaleY);
+
 
         for (YutMapTreeNode node : nodes) {
             for (int i = 0; i < node.pieces.size(); i++) {
@@ -39,7 +45,7 @@ public class YutMap extends Sprite {
                 BufferedImage image = piece.getSpriteImage();
 
                 piece.setBounds(pos[0], pos[1] + i * Y_OFFSET, 
-                                image.getWidth(), image.getHeight());
+                                (int) (image.getWidth() * minScale), (int) (image.getHeight() * minScale));
                 setComponentZOrder(piece, 0);
             }
         }

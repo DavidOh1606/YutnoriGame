@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import GUI.Buttons.*;
 
-public class Help extends Screen {
+public class Help extends Card {
     
 
     public Help() {
@@ -59,8 +59,7 @@ public class Help extends Screen {
         bottomPanel.add(buttonPanel);
         bottomPanel.setOpaque(false);
 
-        buttonPanel.add(new BackButton(this));
+        buttonPanel.add(new BackButton());
         buttonPanel.setOpaque(false);
-        update();
     }
 }

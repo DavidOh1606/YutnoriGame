@@ -16,8 +16,11 @@ public class MoveManager extends Sprite {
     private List<Move> moves;
 
     public MoveManager() {
-        super(ICON);
+        super(FILE);
         moves = new ArrayList<>();
+
+        setRescaleFactor(0.8f);
+        resetSize();
     }
 
     public void addMove(Move move) {

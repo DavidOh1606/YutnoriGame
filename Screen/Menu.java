@@ -6,31 +6,30 @@ import javax.swing.border.EmptyBorder;
 
 import GUI.Buttons.*;
 
-public class Menu extends Screen {
+public class Menu extends Card {
     
     public Menu() {
 
 
+        JPanel panel = getPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         JLabel title = new JLabel("Yutnori");
         Font font = new Font("Arial", Font.PLAIN, 44);
         title.setFont(font);
         title.setAlignmentX(0.5f);
         
         JPanel bottomPanel = new JPanel();
-
-
-
         JPanel buttonPanel = new JPanel();
 
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
 
-        buttonPanel.add(new PlayAI(this));
+        buttonPanel.add(new PlayAI());
         buttonPanel.add(Box.createRigidArea(new Dimension(0, 15)));
     
-        buttonPanel.add(new Play(this));
+        buttonPanel.add(new Play());
         buttonPanel.add(Box.createRigidArea(new Dimension(0, 15)));
 
-        buttonPanel.add(new HelpButton(this));
+        buttonPanel.add(new HelpButton());
         buttonPanel.add(Box.createRigidArea(new Dimension(0, 15)));
 
         //buttonPanel.add(new SettingsButton(this));
@@ -46,12 +45,10 @@ public class Menu extends Screen {
         bottomPanel.add(buttonPanel);
         bottomPanel.setOpaque(false);
 
-        BGPanel panel = getPanel();
         panel.add(Box.createRigidArea(new Dimension(0, 200)));
         panel.add(title);
         panel.add(Box.createRigidArea(new Dimension(0, 140)));
         panel.add(bottomPanel);
 
-        update();
     }
 }

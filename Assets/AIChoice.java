@@ -34,7 +34,7 @@ public class AIChoice {
             }
         }
 
-        if (GM.mapTree.nodeIsShortcut(option.getNode())) {
+        if (GM.mapTree.nodeIsShortcut(piece.getNode(), option.getNode())) {
             value += 3;
         }
 

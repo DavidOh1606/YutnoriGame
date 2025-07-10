@@ -9,10 +9,7 @@ import java.awt.event.*;
 public class TextBox extends Sprite {
 
     private static final String FILE = "Images/textBox.png";
-
-    private static final ImageIcon ICON = new ImageIcon(FILE);
-
-
+    
     private JLabel rollText;
     private JLabel turnText;
     private JLabel winText;
@@ -21,7 +18,7 @@ public class TextBox extends Sprite {
     private int turn;
 
     public TextBox() {
-        super(ICON);
+        super(FILE);
 
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         setBorder(new EmptyBorder(new Insets(10, 0, 0, 0)));
@@ -56,6 +53,9 @@ public class TextBox extends Sprite {
         add(leftPanel);
         add(middlePanel);
         add(rightPanel);
+
+        setRescaleFactor(0.8f);
+        resetSize();
 
     }
 

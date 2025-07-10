@@ -4,17 +4,18 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
+import java.awt.image.*;
+import javax.imageio.ImageIO;
+import java.io.*;
+
 public class Yut extends Sprite implements ActionListener {
     private static final String FILE_UP = "Images/yut_up_small.png";
     private static final String FILE_DOWN = "Images/yut_down_small.png";
     private static final String FILE_BACK = "Images/back.png";
 
-    private static final ImageIcon ICON_UP = new ImageIcon(FILE_UP);
-    private static final ImageIcon ICON_DOWN = new ImageIcon(FILE_DOWN);
-    private static final ImageIcon ICON_BACK = new ImageIcon(FILE_BACK);
 
-    private ImageIcon upIcon;
-    private ImageIcon downIcon;
+    private BufferedImage upIcon;
+    private BufferedImage downIcon;
 
     private final int DEFAULT_FRAME_COUNT = 5;
 
@@ -23,19 +24,15 @@ public class Yut extends Sprite implements ActionListener {
     private int numFrames;
 
     public Yut() {
-        super(ICON_UP);
+        super(FILE_UP);
         up = true;
         numFrames = DEFAULT_FRAME_COUNT;
         animating = false;
-        upIcon = ICON_UP;
-        downIcon = ICON_DOWN;
-    }
+        upIcon = Sprite.getBufferedImage(FILE_UP);
+        downIcon = Sprite.getBufferedImage(FILE_DOWN);
 
-    public Yut(ImageIcon upIcon, ImageIcon downIcon) {
-        this();
-
-        this.upIcon = upIcon;
-        this.downIcon = downIcon;
+        setRescaleFactor(0.9f);
+        resetSize();
     }
 
     public void roll() {

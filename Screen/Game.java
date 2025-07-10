@@ -10,14 +10,15 @@ import java.util.ArrayList;
 import GUI.Buttons.*;
 import java.awt.event.*;
 
-public class Game extends Screen implements MouseListener {
+public class Game extends Card implements MouseListener {
     
 
     public Game() {
         super();
 
-        BGPanel panel = new BGPanel(new ImageIcon("Images/bg.png"));
+        BGPanel panel = getPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+        panel.setRescale(false);
 
         JPanel panelLeft = new JPanel();
         JPanel panelRight = new JPanel();
@@ -65,16 +66,19 @@ public class Game extends Screen implements MouseListener {
         panelLeft.add(moveManagerPanel);
 
 
-        JPanel startPanel = new JPanel();
-        startPanel.setOpaque(false);
-        startPanel.setBorder(new EmptyBorder(new Insets(0, 28, 0, 0)));
-        startPanel.setLayout(new GridLayout(2, 2));
-        startPanel.add(GM.blueStart);
-        startPanel.add(GM.blueEnd);
-        startPanel.add(GM.redStart);
-        startPanel.add(GM.redEnd);
+        JPanel piecePanels = new JPanel();
+        piecePanels.setOpaque(false);
 
-        panelLeft.add(startPanel);
+        JPanel gridPanel = new JPanel();
+        gridPanel.setOpaque(false);
+        gridPanel.setLayout(new GridLayout(2, 2, 10, 10));
+        gridPanel.add(GM.blueStart);
+        gridPanel.add(GM.blueEnd);
+        gridPanel.add(GM.redStart);
+        gridPanel.add(GM.redEnd);
+
+        piecePanels.add(gridPanel);
+        panelLeft.add(piecePanels);
 
         // Right Panel setup
         JPanel mapPanel = new JPanel();
@@ -93,15 +97,13 @@ public class Game extends Screen implements MouseListener {
         panelRight.setLayout(new BoxLayout(panelRight, BoxLayout.Y_AXIS));
 
 
-        backPanel.add(new BackButton(this));
+        backPanel.add(new BackButton());
 
         panel.add(panelLeft);
         panel.add(panelRight);
         
-        add(panel);
 
         GM.map.update();
-        update();
 
         addMouseListener(this);
     }

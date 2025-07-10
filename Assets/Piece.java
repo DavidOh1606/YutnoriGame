@@ -10,9 +10,6 @@ public class Piece extends Sprite implements MouseListener {
     private static final String FILE_BLUE = "Images/piece.png";
     private static final String FILE_RED = "Images/piece-2.png";
 
-    private static final ImageIcon ICON_BLUE = new ImageIcon(FILE_BLUE);
-    private static final ImageIcon ICON_RED = new ImageIcon(FILE_RED);
-
     // Blue is first and equal to 0;
     private int type;
 
@@ -22,13 +19,16 @@ public class Piece extends Sprite implements MouseListener {
     private boolean mouseOver;
 
     public Piece() {
-        super(ICON_BLUE);
+        super(FILE_BLUE);
         // Defaults to blue;
         selectable = true;
         type = 0;
         mouseOver = false;
         addMouseListener(this);
         node = null;
+
+        setRescaleFactor(0.8f);
+        resetSize();
     }
 
     public Piece(int type) {
@@ -36,7 +36,7 @@ public class Piece extends Sprite implements MouseListener {
 
         if (type != 0) {
             this.type = 1;
-            this.setImage(ICON_RED);
+            this.setImage(FILE_RED);
         }
     }
 
@@ -65,6 +65,10 @@ public class Piece extends Sprite implements MouseListener {
     }
 
     public void mousePressed(MouseEvent e) {
+
+        if (e != null && GM.textBox.getTurn() == 1) {
+            return;
+        }
 
         if (!selectable || GM.textBox.getTurn() != type || GM.gameOver) {
             return;
@@ -103,6 +107,10 @@ public class Piece extends Sprite implements MouseListener {
     }
 
     public void mouseEntered(MouseEvent e) {
+        if (e != null && GM.textBox.getTurn() == 1) {
+            return;
+        }
+
         if (!selectable || GM.textBox.getTurn() != type || GM.gameOver) {
             return;
         }
@@ -124,6 +132,10 @@ public class Piece extends Sprite implements MouseListener {
     }
     
     public void mouseExited(MouseEvent e) {
+        if (e != null && GM.textBox.getTurn() == 1) {
+            return;
+        }
+
         if (!selectable || GM.textBox.getTurn() != type || GM.gameOver) {
             return;
         }

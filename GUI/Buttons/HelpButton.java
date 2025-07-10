@@ -6,15 +6,12 @@ import Screen.*;
 
 public class HelpButton extends MenuButton {
     
-    private Screen screen;
-    public HelpButton(Screen screen) {
+    public HelpButton() {
         super("How to Play");
-        this.screen = screen;
 
     }
 
     public void action() {
-        new Help();
-        screen.dispose();
+        Screen.setCard(new Help());
     }
 }

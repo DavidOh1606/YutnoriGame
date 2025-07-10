@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import GUI.Buttons.*;
 
-public class Settings extends Screen {
+public class Settings extends Card {
     
 
     public Settings() {
@@ -19,12 +19,11 @@ public class Settings extends Screen {
 
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.add(new BackButton(this));
+        buttonPanel.add(new BackButton());
         buttonPanel.setOpaque(false);
 
         bottomPanel.add(buttonPanel);
         panel.add(bottomPanel);
 
-        update();
     }
 }

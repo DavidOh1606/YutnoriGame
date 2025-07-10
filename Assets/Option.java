@@ -7,15 +7,16 @@ import java.awt.event.*;
 public class Option extends Sprite implements MouseListener{
     
     private static String FILE = "Images/option.png";
-
-    private static ImageIcon ICON = new ImageIcon(FILE);
-
+    
     private YutMapTreeNode node;
 
     public Option() {
-        super(ICON);
+        super(FILE);
         node = null;
         addMouseListener(this);
+        
+        setRescaleFactor(0.8f);
+        resetSize();
     }
 
     public void setNode(YutMapTreeNode node) {
@@ -31,6 +32,7 @@ public class Option extends Sprite implements MouseListener{
     }
 
     public void mousePressed(MouseEvent e) {
+
 
         Piece piece = GM.selection;
 

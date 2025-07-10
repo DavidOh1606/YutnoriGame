@@ -12,10 +12,9 @@ public abstract class MenuButton extends Sprite implements MouseListener {
     
 
     private static final String FILE = "Images/move.png";
-    private static final ImageIcon ICON = new ImageIcon(FILE);
 
     public MenuButton(String text) {
-        super(ICON);
+        super(FILE);
 
         JLabel textBox = new JLabel(text);
         textBox.setAlignmentX(0.5f);

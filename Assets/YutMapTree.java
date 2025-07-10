@@ -100,10 +100,17 @@ public class YutMapTree {
 
     }
 
-    public boolean nodeIsShortcut(YutMapTreeNode node) {
+    public boolean nodeIsShortcut(YutMapTreeNode node, YutMapTreeNode endNode) {
+        if (node == null || node.right == null) {
+            return false;
+        }
 
-        if (node == shortcut1 || node == rightCorner || node == center) {
-            return true;
+        YutMapTreeNode curr = node.right;
+        for (int i = 0; i < 5; i++) {
+            if (curr == endNode) {
+                return true;
+            }
+            curr = curr.left;
         }
 
         return false;

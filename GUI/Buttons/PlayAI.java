@@ -8,18 +8,17 @@ import Assets.*;
 
 public class PlayAI extends MenuButton {
     
-    private JFrame frame;
 
 
-    public PlayAI(JFrame frame) {
+
+    public PlayAI() {
         super("Play 1P");
-        this.frame = frame;
+
     }
 
     public void action() {
         GM.singleplayer = true;
-        new Game();
-        frame.dispose();
+        Screen.setCard(new Game());
     }
 
 }

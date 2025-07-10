@@ -7,7 +7,7 @@ import javax.swing.Timer;
 
 public class AIPlayer {
     
-    public static final int TIME_PER_MOVE = 500;
+    public static final int TIME_PER_MOVE = 1000;
 
     private int type;
 
@@ -97,6 +97,24 @@ public class AIPlayer {
             }
 
             bestChoice.makeChoice();
+        }
+
+        if (GM.textBox.getTurn() != type) {
+            return;
+        }
+
+
+        if (GM.textBox.getNumRolls() > 0) {
+            Timer timer = new Timer(TIME_PER_MOVE, new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    rollYuts();
+                }
+            });
+
+            timer.setRepeats(false);
+            timer.start();
+
+            return;
         }
 
         if (!GM.moveManager.isEmpty()) {
