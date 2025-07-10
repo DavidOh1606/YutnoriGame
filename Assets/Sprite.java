@@ -25,8 +25,6 @@ public class Sprite extends JPanel {
 
     private int x;
     private int y;
-    private int defaultX;
-    private int defaultY;
 
     private float alpha;
 
@@ -39,8 +37,6 @@ public class Sprite extends JPanel {
         rescaleFactor = 1.0f;
         x = 0;
         y = 0;
-        defaultX = 0;
-        defaultY = 0;
         alpha = 1.0f;
         setImage(file);
         setOpaque(false);
@@ -94,9 +90,6 @@ public class Sprite extends JPanel {
 
         image = newImage;
 
-        x = (int) (defaultX * minScale);
-        y = (int) (defaultY * minScale);
-
         setPreferredSize(new Dimension(image.getWidth(), image.getHeight()));
         revalidate();
         repaint();
@@ -115,10 +108,8 @@ public class Sprite extends JPanel {
 
 
     public void setPosition(int x, int y) {
-        defaultX = x;
-        defaultY = y;
-
-        resetSize();
+        this.x = x;
+        this.y = y;
     }
 
     public void setPosition(int[] position) {
@@ -160,5 +151,9 @@ public class Sprite extends JPanel {
 
     public void setRescale(boolean rescale) {
         this.rescale = rescale;
+    }
+
+    public float getRescaleFactor() {
+        return rescaleFactor;
     }
 }

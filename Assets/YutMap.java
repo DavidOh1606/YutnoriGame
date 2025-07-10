@@ -33,8 +33,8 @@ public class YutMap extends Sprite {
 
     public void update() {
         List<YutMapTreeNode> nodes = map.getNodes();
-        float minScale = Math.min(Screen.scaleX, Screen.scaleY);
-
+        //float minScale = Math.min(Screen.scaleX, Screen.scaleY) * getRescaleFactor();
+        float minScale = 0.8f;
 
         for (YutMapTreeNode node : nodes) {
             for (int i = 0; i < node.pieces.size(); i++) {
@@ -44,8 +44,8 @@ public class YutMap extends Sprite {
                 int[] pos = node.position.calculatePosition();
                 BufferedImage image = piece.getSpriteImage();
 
-                piece.setBounds(pos[0], pos[1] + i * Y_OFFSET, 
-                                (int) (image.getWidth() * minScale), (int) (image.getHeight() * minScale));
+                piece.setBounds((int) (pos[0] * minScale), (int) ((pos[1] + i * Y_OFFSET) * minScale), 
+                                image.getWidth(), image.getHeight());
                 setComponentZOrder(piece, 0);
             }
         }
@@ -68,7 +68,8 @@ public class YutMap extends Sprite {
 
             nodes.remove(GM.NULL_NODE);
         }
-
+        //float minScale = Math.min(Screen.scaleX, Screen.scaleY) * getRescaleFactor();
+        float minScale = 0.8f;
         for (YutMapTreeNode node : nodes) {
             Option option = new Option();
             option.setNode(node);
@@ -77,7 +78,8 @@ public class YutMap extends Sprite {
             int[] pos = node.position.calculatePosition();
 
             BufferedImage image = option.getSpriteImage();
-            option.setBounds(pos[0], pos[1], image.getWidth(), image.getHeight());
+            option.setBounds((int) (pos[0] * minScale), (int) (pos[1] * minScale), image.getWidth(),
+                image.getHeight());
             setComponentZOrder(option, 0);
         }
     }

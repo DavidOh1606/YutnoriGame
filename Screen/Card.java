@@ -46,6 +46,7 @@ public class Card extends JPanel {
         setBounds(0, 0, width, height);
         layers.setBounds(0, 0, width, height);
         background.setBounds(0, 0, width, height);
+
         revalidate();
         repaint();
     }

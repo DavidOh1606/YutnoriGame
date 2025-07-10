@@ -160,6 +160,11 @@ public class Game extends Card implements MouseListener {
         GM.moveSelection = null;
     }
 
+    public void resetSize() {
+        super.resetSize();
+        GM.map.update();
+    }
+
     public void mouseReleased(MouseEvent e) {
 
     }
