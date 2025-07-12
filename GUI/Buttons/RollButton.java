@@ -49,34 +49,26 @@ public class RollButton extends JButton implements ActionListener {
             }
         }
 
-        switch (countUp) {
-        case 0:
-            // Yut
+        if (countUp == 0) {
             GM.moveManager.addMove(new Move(4, "Yut (4)"));
             GM.textBox.addRoll();
-            break;
+        }
 
-        case 1:
-            // Geol
+        else if (countUp == 1) {
             GM.moveManager.addMove(new Move(3, "Geol (3)"));
-            break;
-
-        case 2:
-            // Gae
+        }
+        
+        else if (countUp == 2) {
             GM.moveManager.addMove(new Move(2, "Gae (2)"));
-            break;
+        }
 
-        case 3:
-            // Do
+        else if (countUp == 3) {
             GM.moveManager.addMove(new Move(1, "Do (1)"));
-            break;
+        }
 
-
-        case 4:
-            // Mo
+        else if (countUp == 4) {
             GM.moveManager.addMove(new Move(5, "Mo (5)"));
             GM.textBox.addRoll();
-            break;
         }
     }
 }
